@@ -1,0 +1,25 @@
+---
+const { data } = Astro.props;
+const { hero } = data;
+---
+<section class="relative bg-primeleg-light py-20 lg:py-32 overflow-hidden">
+  <div class="container mx-auto px-4 flex flex-col lg:flex-row items-center">
+    <div class="lg:w-1/2 z-10 pr-8">
+      <h4 class="text-primeleg-accent font-bold uppercase tracking-widest text-sm mb-4">{hero.subtitle}</h4>
+      <h1 class="text-5xl lg:text-7xl font-serif font-bold text-primeleg-primary leading-tight mb-6">
+        {hero.title} <br/><span class="text-primeleg-accent">{hero.titleHighlight}</span>
+      </h1>
+      <p class="text-gray-600 text-lg mb-10 max-w-lg border-l-4 border-primeleg-accent pl-4">
+        {hero.description}
+      </p>
+      <a href="#contact" class="inline-flex bg-primeleg-accent text-white px-8 py-4 font-semibold uppercase text-sm tracking-wider hover:bg-primeleg-primary transition items-center group">
+        {hero.cta} 
+        <span class="ml-2 transform group-hover:translate-x-2 transition">→</span>
+      </a>
+    </div>
+    <div class="lg:w-1/2 mt-12 lg:mt-0 relative">
+      <div class="absolute -inset-4 bg-primeleg-accent opacity-10 rounded-full blur-2xl"></div>
+      <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=800&q=80" alt="Estudio Jurídico" class="relative z-10 w-full rounded-tl-[100px] rounded-br-[100px] shadow-2xl object-cover h-[600px]" />
+    </div>
+  </div>
+</section>

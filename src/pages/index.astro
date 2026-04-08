@@ -1,0 +1,64 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Services from '../components/Services.astro';
+import Stats from '../components/Stats.astro';
+import Testimonials from '../components/Testimonials.astro';
+import Footer from '../components/Footer.astro';
+
+// Toda la información del Markdown centralizada
+const siteData = {
+  companyName: "Portillo Kus & Asociados",
+  tagline: "El Derecho ⚖️ es nuestra Pasión ❤️‍🔥",
+  phone: "011 15-2711-1987",
+  email: "info@portillokusestudio.com",
+  address: "Av. Pte. R. Sáenz Peña 616 Piso 4, Of 403, C1035 CABA",
+  schedule: "Lun - Vie: 09:00 a 18:00 hrs",
+  social: {
+    instagram: "https://instagram.com/abogadoenargentina",
+    telegram: "https://t.me/abogadoenargentina",
+    maps: "https://maps.google.com/..."
+  },
+  hero: {
+    subtitle: "Muestre nuestra experiencia legal",
+    title: "Somos Expertos Líderes En Soluciones",
+    titleHighlight: "Legales",
+    description: "Un Estudio Jurídico integral conformado por abogados con amplia trayectoria y especialistas en múltiples áreas del Derecho a nivel nacional e internacional.",
+    cta: "Soporte Gratuito"
+  },
+  about: {
+    subtitle: "Conózcanos",
+    title: "Su Socio de Confianza en Asuntos",
+    titleHighlight: "Legales Complejos",
+    description: "Somos especialistas en patrocinios de Ciudadanías Argentina, siendo los líderes a nivel nacional. Gracias a nuestro compromiso y esfuerzo somos uno de los Estudios Jurídicos más reconocidos de la Argentina.",
+    experienceTitle: "Más de +900",
+    experienceHighlight: "Expedientes Resueltos",
+    experienceText: "Acompañamos a nuestros clientes paso a paso, brindando claridad, confianza y resultados extraordinarios desde el primer momento."
+  },
+  services: [
+    { title: "Ciudadanías Argentinas", desc: "Líderes a nivel nacional en la resolución de expedientes y trámites de naturalización." },
+    { title: "Derecho Migratorio", desc: "Asesorías en residencias (Mercosur y Extra) y patrocinio para revertir expulsiones." },
+    { title: "Derecho Penal", desc: "Resultados extraordinarios, demostrando inocencia y obteniendo libertad en casos complejos." },
+    { title: "Derecho Laboral", desc: "Defensa integral y dignificación de trabajadores frente a injusticias en el ámbito laboral." }
+  ],
+  testimonials: [
+    { name: "Yocselys Bermudez", role: "Cliente", text: "Inicié mi trámite de naturalización con el Dr. Portillo y me inspiró total confianza. Fue siempre muy atento, claro en cada explicación y me acompañó paso a paso." },
+    { name: "Jorge Requena", role: "Cliente", text: "Muy recomendable para temas migratorios. Me asesoró sobre mi reingreso a Argentina y recientemente por mi trámite de actualización de residencia. Claro y directo." },
+    { name: "Daniela Villegas", role: "Cliente", text: "Quiero agradecer profundamente al Dr. Denis Portillo por su excelente trabajo y acompañamiento durante todo mi proceso de ciudadanía argentina." }
+  ]
+};
+---
+
+<Layout title={`${siteData.companyName} - Estudio Jurídico`}>
+  <Header data={siteData} />
+  <main>
+    <Hero data={siteData} />
+    <About data={siteData} />
+    <Services data={siteData} />
+    <Stats />
+    <Testimonials data={siteData} />
+  </main>
+  <Footer data={siteData} />
+</Layout>

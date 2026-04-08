@@ -1,0 +1,36 @@
+---
+const { data } = Astro.props;
+---
+<header class="w-full z-50 bg-white shadow-md sticky top-0">
+  <div class="bg-primeleg-dark text-gray-300 text-sm py-2 hidden lg:block">
+    <div class="container mx-auto px-4 flex justify-between items-center">
+      <div>
+        <p class="m-0">{data.tagline}</p>
+      </div>
+      <div class="flex space-x-6">
+        <span class="flex items-center"><svg class="w-4 h-4 text-primeleg-accent mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg> {data.address}</span>
+        <span class="flex items-center"><svg class="w-4 h-4 text-primeleg-accent mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg> {data.email}</span>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+    <div class="w-1/4">
+      <a href="/" class="text-2xl font-serif font-bold text-primeleg-primary leading-tight">
+        PORTILLO KUS <br/><span class="text-sm text-primeleg-accent">& ASOCIADOS</span>
+      </a>
+    </div>
+    <nav class="hidden md:flex space-x-8 text-primeleg-primary font-semibold">
+      <a href="/" class="hover:text-primeleg-accent transition">Inicio</a>
+      <a href="#about" class="hover:text-primeleg-accent transition">Nosotros</a>
+      <a href="#services" class="hover:text-primeleg-accent transition">Servicios</a>
+      <a href="#testimonials" class="hover:text-primeleg-accent transition">Testimonios</a>
+    </nav>
+    <div class="hidden md:flex w-1/4 justify-end">
+      <a href={data.social.telegram} class="bg-primeleg-accent text-white px-6 py-3 font-semibold uppercase text-sm tracking-wider hover:bg-primeleg-primary transition flex items-center group">
+        {data.hero.cta} 
+        <span class="ml-2 transform group-hover:translate-x-1 transition">→</span>
+      </a>
+    </div>
+  </div>
+</header>

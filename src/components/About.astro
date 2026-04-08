@@ -1,0 +1,33 @@
+---
+const { data } = Astro.props;
+const { about } = data;
+---
+<section id="about" class="py-24">
+  <div class="container mx-auto px-4 flex flex-col lg:flex-row items-center gap-16">
+    <div class="lg:w-1/2 relative">
+      <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=800&q=80" alt="Abogados" class="rounded shadow-xl relative z-10" />
+      <div class="absolute -bottom-8 -right-8 w-48 h-48 bg-primeleg-primary rounded -z-10 hidden md:block"></div>
+    </div>
+    
+    <div class="lg:w-1/2">
+      <h4 class="text-primeleg-accent font-bold uppercase tracking-widest text-sm mb-2">{about.subtitle}</h4>
+      <h2 class="text-4xl font-serif font-bold text-primeleg-primary mb-6">
+        {about.title} <br/><span class="text-primeleg-accent">{about.titleHighlight}</span>
+      </h2>
+      <p class="text-gray-600 mb-8 leading-relaxed">
+        {about.description}
+      </p>
+      
+      <div class="bg-primeleg-light p-6 border-l-4 border-primeleg-accent mb-8">
+        <h3 class="text-2xl font-serif font-bold text-primeleg-primary mb-2">
+          {about.experienceTitle} <span class="text-primeleg-accent">{about.experienceHighlight}</span>
+        </h3>
+        <p class="text-gray-600 text-sm m-0">{about.experienceText}</p>
+      </div>
+      
+      <a href="#contact" class="text-primeleg-primary font-bold uppercase tracking-widest text-sm hover:text-primeleg-accent transition flex items-center group">
+        Conocer más <span class="ml-2 transform group-hover:translate-x-1 transition">→</span>
+      </a>
+    </div>
+  </div>
+</section>
