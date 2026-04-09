@@ -1,30 +1,33 @@
 ---
 const { data } = Astro.props;
 ---
-<footer class="bg-web-background border-t border-web-secondary text-gray-400 pt-24 pb-0">
+<footer class="bg-web-background border-t border-web-secondary/30 text-gray-400 pt-24 pb-0">
   <div class="container mx-auto px-4 border-b border-web-secondary/50 pb-20">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
       
       <div>
-        <div class="flex items-center mb-6">
-          <div class="w-10 h-10 bg-web-primary text-web-background flex items-center justify-center font-serif font-bold text-xl rounded-b-lg mr-2">PK</div>
-          <h2 class="text-xl font-sans font-extrabold text-web-text uppercase tracking-wider leading-none">
-            Portillo Kus <br/><span class="text-web-primary text-sm">& Asociados</span>
-          </h2>
+        <div class="mb-6">
+          <a href="/" class="inline-block outline-none">
+            <img 
+              src="/logoConNombreTransparente.png" 
+              alt="Portillo Kus & Asociados Logo" 
+              class="h-16 md:h-[72px] w-auto object-contain hover:opacity-80 transition-opacity duration-300" 
+            />
+          </a>
         </div>
         <p class="text-[15px] leading-relaxed mb-6">{data.hero.description}</p>
         <div class="flex space-x-3">
-          <a href={data.social.instagram} target="_blank" class="w-9 h-9 bg-web-secondary rounded-full flex items-center justify-center text-web-text hover:bg-web-primary transition"><span class="text-xs">IG</span></a>
+          <a href={data.social.instagram} target="_blank" class="w-10 h-10 bg-web-secondary/30 border border-web-secondary rounded-full flex items-center justify-center text-web-text hover:bg-web-primary hover:border-web-primary transition-all duration-300"><span class="text-xs font-bold tracking-widest">IG</span></a>
         </div>
       </div>
       
       <div>
         <h4 class="text-web-primary font-serif font-bold text-[20px] mb-6">Enlaces Rápidos</h4>
         <ul class="space-y-3">
-          <li><a href="/" class="hover:text-web-primary text-[15px] flex items-center">» Inicio</a></li>
-          <li><a href="#about" class="hover:text-web-primary text-[15px] flex items-center">» Nosotros</a></li>
-          <li><a href="#services" class="hover:text-web-primary text-[15px] flex items-center">» Especialidades</a></li>
-          <li><a href="#testimonials" class="hover:text-web-primary text-[15px] flex items-center">» Reseñas de Clientes</a></li>
+          <li><a href="/" class="hover:text-web-primary text-[15px] flex items-center transition-colors">» Inicio</a></li>
+          <li><a href="/nosotros" class="hover:text-web-primary text-[15px] flex items-center transition-colors">» Nosotros</a></li>
+          <li><a href="/#services" class="hover:text-web-primary text-[15px] flex items-center transition-colors">» Especialidades</a></li>
+          <li><a href="/testimonios" class="hover:text-web-primary text-[15px] flex items-center transition-colors">» Reseñas de Clientes</a></li>
         </ul>
       </div>
       
@@ -32,7 +35,7 @@ const { data } = Astro.props;
         <h4 class="text-web-primary font-serif font-bold text-[20px] mb-6">Nuestros Servicios</h4>
         <ul class="space-y-3">
           {data.services.map(s => (
-            <li><a href="#services" class="hover:text-web-primary text-[15px] flex items-center">» {s.title}</a></li>
+            <li><a href="/#services" class="hover:text-web-primary text-[15px] flex items-center transition-colors">» {s.title}</a></li>
           ))}
         </ul>
       </div>

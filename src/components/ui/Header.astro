@@ -1,7 +1,7 @@
 ---
 const { data } = Astro.props;
 ---
-<header class="w-full z-50 bg-web-background sticky top-0 shadow-md border-b border-web-secondary">
+<header class="w-full z-50 bg-web-background sticky top-0 shadow-md border-b border-web-secondary relative">
   <div class="bg-web-secondary/20 text-gray-300 text-[13px] py-2.5 hidden lg:block">
     <div class="container mx-auto px-4 flex justify-between items-center">
       <div><p class="m-0 italic">{data.tagline}</p></div>
@@ -18,17 +18,20 @@ const { data } = Astro.props;
     </div>
   </div>
   
-  <div class="container mx-auto px-4 py-0 flex justify-between items-center h-20">
-    <div class="flex items-center">
-      <div class="w-10 h-12 bg-web-primary text-web-background flex items-center justify-center font-serif font-bold text-xl rounded-b-lg mr-2">PK</div>
-      <a href="/" class="text-xl md:text-2xl font-sans font-extrabold text-web-text uppercase tracking-wider leading-none">
-        Portillo Kus <br/><span class="text-web-primary text-sm">& Asociados</span>
-      </a>
-    </div>
+  <div class="container mx-auto px-4 py-0 flex justify-between items-center h-24">
+    
+    <a href="/" class="flex items-center group outline-none">
+      <img 
+        src="/logoConNombreTransparente.png" 
+        alt="Portillo Kus & Asociados Logo" 
+        class="h-16 md:h-20 w-auto object-contain group-hover:opacity-90 transition-opacity duration-300 drop-shadow-md" 
+      />
+    </a>
 
-    <nav class="hidden md:flex space-x-8 text-web-text font-bold text-[15px]">
+<nav class="hidden md:flex space-x-8 text-web-text font-bold text-[15px] items-center">
       <a href="/" class="hover:text-web-primary transition">Inicio</a>
       <a href="/nosotros" class="hover:text-web-primary transition">Nosotros</a>
+      <a href="/equipo" class="hover:text-web-primary transition">Equipo</a>  
       <a href="/#services" class="hover:text-web-primary transition">Especialidades</a>
       <a href="/consultas/consultas" class="hover:text-web-primary transition flex items-center group">
         Catálogo de Consultas
@@ -41,5 +44,34 @@ const { data } = Astro.props;
         Contacto <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
       </a>
     </div>
+
+    <button id="mobile-menu-btn" class="md:hidden text-web-primary focus:outline-none p-2">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+  </div>
+
+  <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-web-background border-b border-web-secondary/50 shadow-2xl flex-col py-6 px-6 gap-6 z-50">
+    <a href="/" class="text-web-text text-lg hover:text-web-primary font-bold uppercase tracking-wide">Inicio</a>
+    <a href="/nosotros" class="text-web-text text-lg hover:text-web-primary font-bold uppercase tracking-wide">Nosotros</a>
+    <a href="/#services" class="text-web-text text-lg hover:text-web-primary font-bold uppercase tracking-wide">Especialidades</a>
+    <a href="/consultas/consultas" class="text-web-primary text-lg font-bold uppercase tracking-wide flex items-center">
+      Catálogo de Consultas
+    </a>
+    <a href="/testimonios" class="text-web-text text-lg hover:text-web-primary font-bold uppercase tracking-wide">Reseñas</a>
+    <a href={`https://wa.me/${data.phone1.replace(/\D/g, '')}`} target="_blank" class="mt-4 bg-web-primary text-web-background px-6 py-4 text-center font-bold uppercase tracking-widest rounded-sm flex justify-center items-center">
+      Contacto <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+    </a>
   </div>
 </header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+
+  btn?.addEventListener('click', () => {
+    menu?.classList.toggle('hidden');
+    menu?.classList.toggle('flex');
+  });
+</script>

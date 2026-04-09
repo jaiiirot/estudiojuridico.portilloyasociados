@@ -1,0 +1,163 @@
+---
+import { chatbotData } from '../../data/chatbot';
+---
+
+<button id="chatbot-toggle" class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-web-primary rounded-full shadow-[0_0_20px_rgba(198,156,109,0.4)] flex items-center justify-center text-web-background hover:scale-110 transition-transform duration-300">
+  <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
+</button>
+
+<div id="chatbot-window" class="hidden fixed bottom-0 right-0 w-full h-full sm:w-[400px] sm:h-[600px] sm:bottom-24 sm:right-6 z-50 bg-web-background border border-web-secondary/50 sm:rounded-sm shadow-2xl flex-col overflow-hidden transition-all duration-300">
+  
+  <div class="bg-[#101c24] border-b border-web-secondary/50 p-4 flex justify-between items-center">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-full bg-web-primary flex items-center justify-center text-web-background font-serif font-bold">PK</div>
+      <div>
+        <h3 class="text-web-text font-serif font-bold text-[16px] leading-tight">Asesor Virtual</h3>
+        <span class="text-web-primary text-[11px] uppercase tracking-widest flex items-center gap-1">
+          <span class="w-2 h-2 rounded-full bg-green-500"></span> En línea
+        </span>
+      </div>
+    </div>
+    <button id="chatbot-close" class="text-gray-400 hover:text-web-primary transition-colors">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+    </button>
+  </div>
+
+  <div id="chatbot-messages" class="flex-grow p-4 overflow-y-auto space-y-4 bg-web-background custom-scrollbar">
+    </div>
+
+  <div class="p-4 bg-[#101c24] border-t border-web-secondary/50">
+    <form id="chatbot-form" class="flex items-center gap-2">
+      <input type="text" id="chatbot-input" placeholder="Escriba su consulta legal..." class="flex-grow bg-web-background border border-web-secondary/50 rounded-sm px-4 py-3 text-[14px] text-web-text placeholder:text-gray-600 focus:outline-none focus:border-web-primary transition-colors" autocomplete="off" />
+      <button type="submit" class="w-12 h-12 bg-web-primary text-web-background rounded-sm flex items-center justify-center hover:bg-web-secondary hover:text-web-text transition-colors">
+        <svg class="w-5 h-5 -rotate-90" fill="currentColor" viewBox="0 0 20 20"><path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"></path></svg>
+      </button>
+    </form>
+  </div>
+</div>
+
+<style>
+  .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+  .custom-scrollbar::-webkit-scrollbar-track { background: #0c161d; }
+  .custom-scrollbar::-webkit-scrollbar-thumb { background: #484f55; border-radius: 4px; }
+</style>
+
+<script>
+  // Importar datos desde Frontmatter al cliente
+  const chatData = {
+    welcome: "¡Hola! Soy el asistente de Portillo Kus & Asociados. ¿En qué área legal podemos ayudarle hoy?",
+    whatsappUrl: "https://wa.me/5491127111987?text=Hola,%20vengo%20desde%20su%20sitio%20web%20y%20deseo%20una%20consulta.",
+    firmPitch: "Como líderes a nivel nacional con más de 900 expedientes resueltos, somos su mejor opción para garantizar un resultado exitoso.",
+    faqs: [
+      { keys: ["ciudadanía", "ciudadania", "italiana", "española", "nacionalidad", "argentina"], ans: "Somos especialistas y líderes a nivel nacional en trámites de Ciudadanía, con más de 900 expedientes resueltos con éxito." },
+      { keys: ["penal", "preso", "comisaría", "comisaria", "cárcel", "carcel", "delito", "defensa"], ans: "Contamos con un equipo experto en Defensa Penal, logrando resultados extraordinarios y demostrando inocencia en casos complejos." },
+      { keys: ["migración", "migraciones", "visa", "expulsión", "residencia", "radicación"], ans: "En Derecho Migratorio somos expertos. Resolvemos desde trámites de residencia hasta la revocación de órdenes de expulsión." },
+      { keys: ["divorcio", "familia", "alimentos", "cuota", "hijos", "visitas"], ans: "Nuestro equipo de Familia aborda casos de divorcio y cuota alimentaria con la mayor confidencialidad y estrategia." },
+      { keys: ["precio", "costo", "honorarios", "pagar", "consulta", "valor"], ans: "Cada caso es único y requiere un análisis profesional detallado. Contamos con múltiples métodos de pago (Efectivo, Transferencia, Paypal, Zelle)." }
+    ]
+  };
+
+  const toggleBtn = document.getElementById('chatbot-toggle');
+  const closeBtn = document.getElementById('chatbot-close');
+  const windowEl = document.getElementById('chatbot-window');
+  const messagesEl = document.getElementById('chatbot-messages');
+  const formEl = document.getElementById('chatbot-form');
+  const inputEl = document.getElementById('chatbot-input') as HTMLInputElement;
+
+  // Lógica de apertura/cierre
+  toggleBtn?.addEventListener('click', () => {
+    windowEl?.classList.remove('hidden');
+    windowEl?.classList.add('flex');
+    toggleBtn.classList.add('hidden');
+    if(messagesEl?.children.length === 0) addMessage(chatData.welcome, 'bot');
+  });
+
+  closeBtn?.addEventListener('click', () => {
+    windowEl?.classList.add('hidden');
+    windowEl?.classList.remove('flex');
+    toggleBtn?.classList.remove('hidden');
+  });
+
+  // Renderizar Mensaje
+  function addMessage(text: string, sender: 'user' | 'bot') {
+    const div = document.createElement('div');
+    div.className = `max-w-[85%] rounded-sm p-4 text-[14px] leading-relaxed shadow-md ${sender === 'user' ? 'bg-web-primary text-web-background ml-auto' : 'bg-web-secondary/20 border border-web-secondary/50 text-gray-300 mr-auto'}`;
+    div.innerHTML = text; // Permite inyectar enlaces <a>
+    messagesEl?.appendChild(div);
+    messagesEl?.scrollTo({ top: messagesEl.scrollHeight, behavior: 'smooth' });
+  }
+
+  // Generar Botón de WhatsApp HTML
+  const getWhatsAppBtn = () => `<br><br><a href="${chatData.whatsappUrl}" target="_blank" class="inline-block mt-2 bg-web-background border border-web-primary text-web-primary px-4 py-2 text-[12px] uppercase font-bold tracking-widest rounded-sm hover:bg-web-primary hover:text-web-background transition-colors">Hablar con un Abogado </a>`;
+
+  // Gestión Límite Diario (IA)
+  function canUseAI() {
+    const today = new Date().toDateString();
+    const limitData = JSON.parse(localStorage.getItem('pk_chat_limit') || '{"date": "", "count": 0}');
+    
+    if (limitData.date !== today) {
+      localStorage.setItem('pk_chat_limit', JSON.stringify({ date: today, count: 1 }));
+      return true;
+    }
+    if (limitData.count < 3) {
+      limitData.count++;
+      localStorage.setItem('pk_chat_limit', JSON.stringify(limitData));
+      return true;
+    }
+    return false;
+  }
+
+  // Procesar Envío
+  formEl?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const msg = inputEl.value.trim();
+    if (!msg) return;
+
+    addMessage(msg, 'user');
+    inputEl.value = '';
+    
+    // 1. Buscar en FAQ por palabra clave
+    const lowerMsg = msg.toLowerCase();
+    const faqMatch = chatData.faqs.find(faq => faq.keys.some(key => lowerMsg.includes(key)));
+
+    if (faqMatch) {
+      setTimeout(() => {
+        addMessage(`${faqMatch.ans} ${chatData.firmPitch} ${getWhatsAppBtn()}`, 'bot');
+      }, 600);
+      return;
+    }
+
+    // 2. Si no es FAQ, usar IA (si tiene créditos)
+    if (!canUseAI()) {
+      setTimeout(() => {
+        addMessage(`Ha superado el límite de consultas virtuales por hoy. Para analizar la complejidad de su caso de manera profunda, le invitamos a contactarnos. ${chatData.firmPitch} ${getWhatsAppBtn()}`, 'bot');
+      }, 500);
+      return;
+    }
+
+    // Loading indicator
+    const loadingId = 'loading-' + Date.now();
+    const loadingDiv = document.createElement('div');
+    loadingDiv.id = loadingId;
+    loadingDiv.className = 'max-w-[85%] rounded-sm p-4 bg-web-secondary/20 border border-web-secondary/50 text-gray-400 mr-auto text-[13px] italic';
+    loadingDiv.innerText = 'Analizando caso...';
+    messagesEl?.appendChild(loadingDiv);
+
+    // Llamada a la API de Groq
+    try {
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: msg })
+      });
+      const data = await res.json();
+      
+      document.getElementById(loadingId)?.remove();
+      // Aseguramos que siempre lleve el botón de WhatsApp al final
+      addMessage(`${data.reply} ${getWhatsAppBtn()}`, 'bot');
+    } catch (err) {
+      document.getElementById(loadingId)?.remove();
+      addMessage(`Ocurrió un error de red. Por favor, comuníquese directamente para una atención premium. ${getWhatsAppBtn()}`, 'bot');
+    }
+  });
+</script>

@@ -1,0 +1,95 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { equipoData } from '../../data/equipo';
+---
+
+<Layout 
+  title="Nuestro Equipo Élite | Portillo Kus & Asociados"
+  description="Conozca a los abogados y socios de nuestra firma. Un equipo integral nacional e internacional comprometido con la excelencia."
+>
+  <div class="w-full bg-web-background pb-32 border-t border-web-secondary/20 relative overflow-hidden">
+    
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[500px] bg-[radial-gradient(ellipse_at_top,_var(--tw-colors-web-secondary)_0%,_transparent_70%)] opacity-15 pointer-events-none"></div>
+
+    <div class="relative z-10 pt-32 pb-24 px-4 text-center">
+      <div class="flex items-center justify-center gap-4 mb-6">
+        <span class="w-12 h-[1px] bg-web-primary"></span>
+        <h4 class="text-web-text font-bold text-[14px] uppercase tracking-widest m-0">Excelencia Legal</h4>
+        <span class="w-12 h-[1px] bg-web-primary"></span>
+      </div>
+      
+      <h1 class="text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-web-text mb-8 leading-tight drop-shadow-lg">
+        Nuestra <span class="text-web-primary italic font-light">Firma</span>
+      </h1>
+      
+      <p class="text-gray-400 max-w-2xl mx-auto text-[18px] font-light leading-relaxed">
+        Un equipo multidisciplinario de abogados de élite, dedicados a diseñar soluciones legales estratégicas con absoluta confidencialidad y rigor profesional.
+      </p>
+    </div>
+
+    <div class="container max-w-7xl mx-auto px-4 relative z-10">
+      <div class="space-y-24 md:space-y-32">
+        {equipoData.map((member, index) => (
+          <div class={`flex flex-col md:flex-row gap-12 lg:gap-20 items-center ${index % 2 === 0 ? '' : 'md:flex-row-reverse'}`}>
+            
+            <div class="w-full md:w-1/2 group relative overflow-hidden rounded-sm shadow-2xl border border-web-secondary/30">
+              <div class="absolute inset-0 bg-web-background/50 z-10 group-hover:bg-transparent transition-colors duration-700 pointer-events-none"></div>
+              
+              <img 
+                src={member.image} 
+                alt={`Fotografía Profesional de ${member.name}`} 
+                class="w-full h-[450px] lg:h-[550px] object-cover object-top transition-all duration-1000 ease-in-out group-hover:scale-105 filter grayscale group-hover:grayscale-0" 
+                loading="lazy" 
+              />
+              
+              <div class="absolute bottom-0 left-0 w-0 h-1 bg-web-primary transition-all duration-700 ease-out group-hover:w-full z-20"></div>
+            </div>
+            
+            <div class="w-full md:w-1/2 relative">
+              
+              <span class="absolute -top-10 -left-6 text-7xl font-serif font-extralight text-web-secondary/30 pointer-events-none group-hover:text-web-primary/20 transition-colors">
+                0{index + 1}
+              </span>
+
+              <div class="relative z-10">
+                <div class="flex items-center gap-3 mb-4">
+                  <span class="w-6 h-[1px] bg-web-primary"></span>
+                  <span class="text-[13px] font-bold uppercase tracking-widest text-web-primary m-0 block">
+                    {member.role}
+                  </span>
+                </div>
+                
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-web-text mb-8 leading-tight">
+                  {member.name}
+                </h2>
+                
+                <div class="w-20 h-1 bg-web-secondary/50 mb-10 transition-colors group-hover:bg-web-primary/50"></div>
+                
+                <p class="text-gray-300 text-[17px] font-light leading-relaxed mb-12 max-w-xl">
+                  {member.description}
+                </p>
+                
+                <div class="flex items-center gap-5 pt-8 border-t border-web-secondary/30 transition-colors duration-500 group-hover:border-web-primary/30 mt-auto">
+                  <span class="text-[12px] text-gray-500 uppercase tracking-widest font-bold">Contacto Profesional</span>
+                  {member.socials.map((social) => (
+                    <a 
+                      href={social.url} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      class="w-11 h-11 rounded-full border border-web-secondary/50 flex items-center justify-center text-web-secondary hover:text-web-background hover:bg-web-primary hover:border-web-primary transition-all duration-300 transform hover:scale-110" 
+                      title={`Conectar vía ${social.name}`}
+                    >
+                      <Fragment set:html={social.icon} />
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        ))}
+      </div>
+    </div>
+    
+  </div>
+</Layout>
