@@ -1,53 +1,57 @@
 ---
 const { data } = Astro.props;
 ---
-<footer id="contact" class="bg-primeleg-dark text-gray-400 pt-20 pb-10">
-  <div class="container mx-auto px-4">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+<footer class="bg-primeleg-dark text-gray-400 pt-24 pb-0">
+  <div class="container mx-auto px-4 border-b border-gray-800 pb-20">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+      
       <div>
-        <a href="/" class="text-2xl font-serif font-bold text-white leading-tight block mb-6">
-          PORTILLO KUS <br/><span class="text-sm text-primeleg-accent">& ASOCIADOS</span>
-        </a>
-        <p class="text-sm leading-relaxed mb-6">Defendemos firmemente la excelencia y las mejores prácticas legales en cada caso que representamos.</p>
-        <div class="flex space-x-4">
-          <a href={data.social.instagram} class="w-10 h-10 bg-gray-800 rounded flex items-center justify-center hover:bg-primeleg-accent hover:text-white transition">IG</a>
-          <a href={data.social.telegram} class="w-10 h-10 bg-gray-800 rounded flex items-center justify-center hover:bg-primeleg-accent hover:text-white transition">TG</a>
+        <div class="flex items-center mb-6">
+          <div class="w-10 h-10 bg-white text-primeleg-primary flex items-center justify-center font-serif font-bold text-xl rounded-b-lg mr-2">PK</div>
+          <h2 class="text-xl font-sans font-extrabold text-white uppercase tracking-wider leading-none">
+            Portillo Kus <br/><span class="text-primeleg-accent text-sm">& Asociados</span>
+          </h2>
+        </div>
+        <p class="text-[15px] leading-relaxed mb-6">{data.hero.description}</p>
+        <div class="flex space-x-3">
+          <a href={data.social.instagram} target="_blank" class="w-9 h-9 bg-gray-800 rounded-full flex items-center justify-center text-white hover:bg-primeleg-accent transition"><span class="text-xs">IG</span></a>
         </div>
       </div>
       
       <div>
-        <h4 class="text-white font-serif font-bold text-xl mb-6 border-b border-gray-800 pb-2">Enlaces Rápidos</h4>
-        <ul class="space-y-3 text-sm">
-          <li><a href="/" class="hover:text-primeleg-accent transition">Inicio</a></li>
-          <li><a href="#about" class="hover:text-primeleg-accent transition">Nosotros</a></li>
-          <li><a href="#services" class="hover:text-primeleg-accent transition">Servicios</a></li>
-          <li><a href="#testimonials" class="hover:text-primeleg-accent transition">Testimonios</a></li>
+        <h4 class="text-white font-serif font-bold text-[20px] mb-6">Enlaces Rápidos</h4>
+        <ul class="space-y-3">
+          <li><a href="/" class="hover:text-primeleg-accent text-[15px] flex items-center">» Inicio</a></li>
+          <li><a href="#about" class="hover:text-primeleg-accent text-[15px] flex items-center">» Nosotros</a></li>
+          <li><a href="#services" class="hover:text-primeleg-accent text-[15px] flex items-center">» Especialidades</a></li>
+          <li><a href="#testimonials" class="hover:text-primeleg-accent text-[15px] flex items-center">» Reseñas de Clientes</a></li>
         </ul>
       </div>
       
       <div>
-        <h4 class="text-white font-serif font-bold text-xl mb-6 border-b border-gray-800 pb-2">Servicios</h4>
-        <ul class="space-y-3 text-sm">
+        <h4 class="text-white font-serif font-bold text-[20px] mb-6">Nuestros Servicios</h4>
+        <ul class="space-y-3">
           {data.services.map(s => (
-            <li><a href="#services" class="hover:text-primeleg-accent transition">{s.title}</a></li>
+            <li><a href="#services" class="hover:text-primeleg-accent text-[15px] flex items-center">» {s.title}</a></li>
           ))}
         </ul>
       </div>
       
       <div>
-        <h4 class="text-white font-serif font-bold text-xl mb-6 border-b border-gray-800 pb-2">Contacto</h4>
-        <ul class="space-y-4 text-sm">
-          <li class="flex items-start"><span class="text-primeleg-accent mr-3">📍</span> {data.address}</li>
-          <li class="flex items-start"><span class="text-primeleg-accent mr-3">📞</span> {data.phone}</li>
-          <li class="flex items-start"><span class="text-primeleg-accent mr-3">📧</span> {data.email}</li>
-          <li class="flex items-start"><span class="text-primeleg-accent mr-3">🕒</span> {data.schedule}</li>
+        <h4 class="text-white font-serif font-bold text-[20px] mb-6">Contacto y Pagos</h4>
+        <ul class="space-y-3 mb-6 text-[14px]">
+          <li><span class="text-primeleg-accent">Sede:</span> {data.address}</li>
+          <li><span class="text-primeleg-accent">Tel:</span> {data.phone1}</li>
+          <li><span class="text-primeleg-accent">Horario:</span> {data.schedule}</li>
         </ul>
+        <h5 class="text-white font-serif font-bold text-[16px] mb-3">Métodos de Pago</h5>
+        <p class="text-[14px] italic">{data.paymentMethods}</p>
       </div>
+
     </div>
-    
-    <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm">
-      <p>© {new Date().getFullYear()} {data.companyName}. Todos los derechos reservados.</p>
-      <p class="mt-4 md:mt-0">Diseñado con Astro y Tailwind CSS</p>
-    </div>
+  </div>
+  
+  <div class="container mx-auto px-4 py-6 text-center text-[14px]">
+    <p>© Copyright {new Date().getFullYear()} Todos los derechos reservados por <span class="text-primeleg-accent">{data.companyName}</span></p>
   </div>
 </footer>

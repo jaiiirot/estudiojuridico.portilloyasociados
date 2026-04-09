@@ -1,25 +1,28 @@
 ---
 const { data } = Astro.props;
-const { hero } = data;
 ---
-<section class="relative bg-primeleg-light py-20 lg:py-32 overflow-hidden">
-  <div class="container mx-auto px-4 flex flex-col lg:flex-row items-center">
-    <div class="lg:w-1/2 z-10 pr-8">
-      <h4 class="text-primeleg-accent font-bold uppercase tracking-widest text-sm mb-4">{hero.subtitle}</h4>
-      <h1 class="text-5xl lg:text-7xl font-serif font-bold text-primeleg-primary leading-tight mb-6">
-        {hero.title} <br/><span class="text-primeleg-accent">{hero.titleHighlight}</span>
+<section class="relative pt-28 pb-32 overflow-hidden flex items-center">
+  <div class="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    
+    <div class="z-10">
+      <h4 class="text-primeleg-primary font-bold text-[16px] mb-4 border-l-2 border-primeleg-accent pl-3">Showcase Our Law Expertise</h4>
+      <h1 class="text-[55px] lg:text-[70px] font-serif font-bold text-primeleg-primary leading-[1.1] mb-6">
+        We Are Leading <br/>Experts In <span class="text-primeleg-accent">Legal</span><br/>Solutions
       </h1>
-      <p class="text-gray-600 text-lg mb-10 max-w-lg border-l-4 border-primeleg-accent pl-4">
-        {hero.description}
+      <p class="text-gray-500 text-[17px] mb-10 max-w-md leading-relaxed">
+        Our team is driven by a passion for justice and a dedication to upholding the highest standards of professional integrity.
       </p>
-      <a href="#contact" class="inline-flex bg-primeleg-accent text-white px-8 py-4 font-semibold uppercase text-sm tracking-wider hover:bg-primeleg-primary transition items-center group">
-        {hero.cta} 
-        <span class="ml-2 transform group-hover:translate-x-2 transition">→</span>
+      <a href="#contact" class="inline-flex bg-primeleg-accent text-white px-9 py-4 font-bold text-[15px] hover:bg-primeleg-primary transition items-center">
+        Free Support <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
       </a>
     </div>
-    <div class="lg:w-1/2 mt-12 lg:mt-0 relative">
-      <div class="absolute -inset-4 bg-primeleg-accent opacity-10 rounded-full blur-2xl"></div>
-      <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=800&q=80" alt="Estudio Jurídico" class="relative z-10 w-full rounded-tl-[100px] rounded-br-[100px] shadow-2xl object-cover h-[600px]" />
+
+    <div class="relative flex justify-end z-10">
+      <div class="absolute -top-10 -right-10 w-64 h-64 bg-[radial-gradient(#c69c6d_2px,transparent_2px)] [background-size:16px_16px] opacity-30 -z-10"></div>
+      
+      <div class="w-[85%] relative rounded-t-full rounded-b-none overflow-hidden shadow-2xl border-b-8 border-primeleg-accent">
+        <img src="https://images.unsplash.com/photo-1556484606-2184bf18c227?auto=format&fit=crop&w=800&q=80" alt="Abogado" class="w-full h-[600px] object-cover" />
+      </div>
     </div>
   </div>
 </section>

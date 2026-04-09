@@ -1,1 +1,26 @@
 @import "tailwindcss";
+
+@theme {
+  /* Colores EXACTOS extraídos de las imágenes de Primeleg */
+  --color-primeleg-dark: #0c161d;    /* Topbar y Footer */
+  --color-primeleg-primary: #122230; /* Títulos y fondo del Header */
+  --color-primeleg-accent: #c69c6d;  /* Dorado/Cobre */
+  --color-primeleg-light: #f4f6f9;   /* Fondo gris muy sutil para secciones */
+  
+  /* Tipografías */
+  --font-sans: 'Inter', sans-serif;
+  --font-serif: 'Playfair Display', serif;
+}
+
+body {
+  @apply font-sans text-gray-500 bg-white antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-serif text-primeleg-primary;
+}
+
+/* Transiciones para botones y enlaces */
+a, button {
+  @apply transition-all duration-300;
+}

@@ -1,0 +1,86 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { consultasData } from '../data/consultas';
+
+// Objeto completo con toda la data que necesitan el Header y el Footer
+const siteData = {
+  companyName: "Portillo Kus & Asociados",
+  tagline: "El Derecho ⚖️ es nuestra Pasión ❤️‍🔥",
+  phone1: "(+54-9) 11-2711-1987",
+  phone2: "(+54-9) 11-3511-1987",
+  email: "portillokusyasociados@gmail.com",
+  address: "Av. Pte. R. Sáenz Peña 616 Piso 4, Oficina 403, C1035 CABA",
+  schedule: "Abierto · Cierra a las 6 p. m.",
+  paymentMethods: "Efectivo, Transferencia, Paypal, Mercado Pago, Zelle",
+  social: {
+    instagram: "https://instagram.com/abogadoenargentina",
+    asociacion: "@uvenar"
+  },
+  hero: {
+    description: "Somos un Estudio Jurídico integral conformado por abogados con amplia trayectoria y especialistas en múltiples áreas del Derecho.",
+  },
+  services: [
+    { title: "Ciudadanías Argentinas", desc: "Líderes a nivel nacional en patrocinios y resolución de expedientes de naturalización desde 2020." },
+    { title: "Derecho Migratorio", desc: "Asesorías en tramitaciones de residencias (Mercosur y Extra Mercosur) y patrocinio para revertir disposiciones de expulsión." },
+    { title: "Derecho Penal", desc: "Resultados extraordinarios, demostrando inocencia y obteniendo la libertad en casos de imputaciones muy difíciles." },
+    { title: "Derecho Laboral", desc: "Defensa integral para dignificar a muchísimos trabajadores en cuanto a las injusticias que sufren." }
+  ]
+};
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Catálogo de Consultas y Servicios Legales | Portillo Kus & Asociados</title>
+  <meta name="description" content="Consulta rápida por WhatsApp con nuestros abogados. Especialistas en Ciudadanía Argentina, Visas, Defensa Penal, Divorcios, Migraciones, Accidentes y más.">
+  <meta name="keywords" content="abogado en buenos aires, ciudadanía argentina, visa americana, defensa penal argentina, abogado migratorio, abogado de familia, abogado de accidentes, poder venezuela argentina">
+  <meta name="author" content="Portillo Kus & Asociados">
+  
+  <meta property="og:title" content="Catálogo de Consultas - Portillo Kus & Asociados">
+  <meta property="og:description" content="Resuelve tu problema legal hoy. Especialistas en Migraciones, Penal, Familia y Visas.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.portillokusestudio.com/consultas">
+</head>
+
+<body class="font-sans text-gray-500 bg-white antialiased">
+  <Header data={siteData} />
+
+  <main class="w-full bg-primeleg-light min-h-screen pb-24">
+    <div class="bg-primeleg-primary pt-32 pb-20 px-4 text-center">
+      <h4 class="text-primeleg-accent font-bold text-[16px] uppercase tracking-widest mb-4">Portafolio Legal</h4>
+      <h1 class="text-4xl md:text-6xl font-serif font-bold text-white mb-6">Catálogo de <span class="text-primeleg-accent">Consultas</span></h1>
+      <p class="text-gray-300 max-w-2xl mx-auto text-lg">Seleccione el área legal de su interés para ser redirigido directamente al canal prioritario de WhatsApp con el abogado especialista.</p>
+    </div>
+
+    <div class="container mx-auto px-4 mt-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {consultasData.map((consulta) => (
+          <div class="bg-white p-8 rounded-sm shadow-sm hover:shadow-xl border border-gray-100 hover:border-primeleg-accent transition-all duration-300 group flex flex-col justify-between">
+            <div>
+              <div class="w-14 h-14 bg-primeleg-light rounded-full flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                {consulta.icon}
+              </div>
+              <h3 class="text-[19px] font-serif font-bold text-primeleg-primary mb-3 leading-snug">{consulta.title}</h3>
+              <p class="text-[14px] text-gray-500 mb-6">{consulta.desc}</p>
+            </div>
+            
+            <a href={consulta.url} target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-[14px] font-bold text-primeleg-primary group-hover:text-primeleg-accent transition-colors">
+              Iniciar Consulta 
+              <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </main>
+
+  <div class="bg-primeleg-dark">
+    <Footer data={siteData} />
+  </div>
+</body>
+</html>

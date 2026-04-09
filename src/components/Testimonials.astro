@@ -1,35 +1,33 @@
 ---
 const { data } = Astro.props;
 ---
-<section id="testimonials" class="py-24">
+<section class="py-28">
   <div class="container mx-auto px-4">
     <div class="flex flex-col lg:flex-row justify-between items-end mb-16">
-      <div class="lg:w-1/2">
-        <h4 class="text-primeleg-accent font-bold uppercase tracking-widest text-sm mb-2">Reseñas de Clientes</h4>
-        <h2 class="text-4xl font-serif font-bold text-primeleg-primary">Muy Felices Por El <br/><span class="text-primeleg-accent">Feedback</span> De Nuestros Clientes</h2>
+      <div>
+        <h4 class="text-primeleg-primary font-bold text-[16px] mb-3 border-l-2 border-primeleg-accent pl-3">Client Review</h4>
+        <h2 class="text-[42px] font-serif font-bold text-primeleg-primary leading-[1.2]">We Are Very Happy For<br/><span class="text-primeleg-accent">Client's</span> Our Feedback</h2>
       </div>
-      <div class="hidden lg:block">
-        <a href={data.social.maps} target="_blank" class="text-primeleg-primary font-bold uppercase tracking-widest text-sm hover:text-primeleg-accent transition flex items-center group">
-          Ver en Google Maps <span class="ml-2 transform group-hover:translate-x-1 transition">→</span>
+      <div class="mt-6 lg:mt-0">
+        <a href="#" class="inline-flex items-center font-bold text-primeleg-primary hover:text-primeleg-accent transition">
+          Expert Guidance <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
         </a>
       </div>
     </div>
     
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      {data.testimonials.map((testi) => (
-        <div class="bg-white p-8 shadow-md border border-gray-100 relative">
-          <div class="flex text-primeleg-accent mb-4">
-            {"★★★★★"}
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 pr-8"> {data.testimonials.slice(0,2).map((testi) => (
+        <div class="bg-white border border-gray-100 p-10 shadow-lg relative rounded-sm">
+          <div class="flex text-primeleg-accent text-sm mb-6 space-x-1">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
           </div>
-          <p class="text-gray-600 italic mb-8 relative z-10">"{testi.text}"</p>
-          <div class="flex items-center">
-            <div class="w-12 h-12 bg-primeleg-light rounded-full flex items-center justify-center text-primeleg-primary font-bold text-xl mr-4">
-              {testi.name.charAt(0)}
-            </div>
-            <div>
-              <h4 class="font-serif font-bold text-primeleg-primary">{testi.name}</h4>
-              <span class="text-xs text-primeleg-accent uppercase tracking-widest">{testi.role}</span>
-            </div>
+          <p class="text-gray-500 text-[16px] leading-relaxed mb-8 italic">"{testi.text}"</p>
+          <div>
+            <h4 class="text-[20px] font-serif font-bold text-primeleg-primary">{testi.name}</h4>
+            <span class="text-primeleg-accent text-[14px]">{testi.role}</span>
+          </div>
+          
+          <div class="absolute top-1/2 -translate-y-1/2 -right-12 w-24 h-24 rounded-full border-4 border-white shadow-md overflow-hidden">
+             <img src="https://ui-avatars.com/api/?name=User&background=122230&color=fff" alt="User" class="w-full h-full object-cover" />
           </div>
         </div>
       ))}
