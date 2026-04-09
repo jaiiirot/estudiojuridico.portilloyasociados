@@ -1,41 +1,42 @@
 ---
 const { data } = Astro.props;
+const { about } = data;
 ---
-<section id="about" class="py-28 bg-white">
-  <div class="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<section id="about" class="py-32">
+  <div class="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
     
-    <div class="relative">
-      <div class="w-[80%] rounded-lg overflow-hidden relative z-10">
-        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=800&q=80" alt="Nosotros" class="w-full h-auto object-cover" />
+    <div class="relative pl-8">
+      <div class="w-[85%] rounded-sm overflow-hidden relative z-10 shadow-lg">
+        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=800&q=80" alt="Estudio Jurídico" class="w-full h-[500px] object-cover" />
       </div>
-      <div class="absolute -bottom-10 -right-4 w-[50%] border-8 border-white rounded-lg overflow-hidden z-20 shadow-xl">
-         <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=400&q=80" alt="Detalle" class="w-full h-auto object-cover" />
+      <div class="absolute -bottom-12 right-0 w-[55%] border-8 border-white rounded-sm overflow-hidden z-20 shadow-2xl">
+         <img src="https://images.unsplash.com/photo-1556484606-2184bf18c227?auto=format&fit=crop&w=400&q=80" alt="Detalle" class="w-full h-48 object-cover" />
       </div>
     </div>
     
-    <div>
-      <h4 class="text-primeleg-primary font-bold text-[16px] mb-3 border-l-2 border-primeleg-accent pl-3">Let's Get Printing</h4>
-      <h2 class="text-[42px] font-serif font-bold text-primeleg-primary leading-[1.2] mb-6">
-        Your Trusted <span class="text-primeleg-accent">Partner</span> In <br/>Complex Legal
+    <div class="mt-16 lg:mt-0">
+      <h4 class="text-primeleg-primary font-bold text-[15px] uppercase tracking-widest mb-4 border-l-2 border-primeleg-accent pl-4">
+        {about.subtitle}
+      </h4>
+      <h2 class="text-[40px] lg:text-[50px] font-serif font-bold text-primeleg-primary leading-[1.2] mb-8">
+        {about.title} <br/><span class="text-primeleg-accent">{about.titleHighlight}</span>
       </h2>
-      <p class="text-gray-500 mb-8 leading-relaxed">
-        Our practice areas include but are not limited to personal injury cont redy to family law criminal defense like that future
+      <p class="text-gray-500 mb-10 leading-relaxed text-[17px]">
+        {about.description}
       </p>
       
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
-        <div>
-          <h3 class="text-2xl font-serif font-bold text-primeleg-primary mb-3">Over 10 Year Of <span class="text-primeleg-accent">Experience</span></h3>
-          <p class="text-gray-500 text-[15px]">Progressively visualize collaborative interfaces with revolutionary services Compellingly pontificate.</p>
-        </div>
-        <div>
-           <h4 class="text-[17px] font-bold text-primeleg-primary leading-snug">Our Attorneys Deliver Tailored Legal</h4>
-           <h5 class="text-[17px] font-bold text-primeleg-accent leading-snug">Solutions To Individuals.</h5>
-        </div>
+      <div class="bg-primeleg-light p-8 border-l-4 border-primeleg-accent mb-10">
+        <h3 class="text-[24px] font-serif font-bold text-primeleg-primary mb-2">
+          {about.experienceTitle} <span class="text-primeleg-accent">{about.experienceHighlight}</span>
+        </h3>
+        <p class="text-gray-500 text-[15px] m-0">{about.experienceText}</p>
       </div>
       
-      <a href="#about" class="inline-flex bg-primeleg-primary text-white px-8 py-4 font-bold text-[15px] hover:bg-primeleg-accent transition items-center">
-        More About <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+      <a href="/consultas" class="inline-flex items-center font-bold uppercase tracking-widest text-[14px] text-primeleg-primary hover:text-primeleg-accent transition-colors group">
+        Conocer Especialidades 
+        <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
       </a>
     </div>
+
   </div>
 </section>
