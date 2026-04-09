@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/index/Hero.astro';
 import About from '../components/index/About.astro';
+import Video from '../components/index/Video.astro'; // <-- IMPORTAMOS EL VIDEO
 import Services from '../components/index/Services.astro';
 import Stats from '../components/index/Stats.astro';
 import Testimonials from '../components/index/Testimonials.astro';
@@ -10,7 +11,11 @@ import { siteData } from '../data/site';
 
 <Layout title={`${siteData.companyName} - Inicio`}>
   <Hero data={siteData} />
-  <!-- <About data={siteData} /> -->
+  
+  <About data={siteData} />
+  
+  <Video />
+  
   <Services data={siteData} />
   <Stats data={siteData} />
   <Testimonials data={siteData} />
