@@ -1,17 +1,17 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.astro';
-import About from '../components/About.astro';
-import Services from '../components/Services.astro';
-import Stats from '../components/Stats.astro';
-import Testimonials from '../components/Testimonials.astro';
+import Hero from '../components/index/Hero.astro';
+import About from '../components/index/About.astro';
+import Services from '../components/index/Services.astro';
+import Stats from '../components/index/Stats.astro';
+import Testimonials from '../components/index/Testimonials.astro';
 import { siteData } from '../data/site';
 ---
 
 <Layout title={`${siteData.companyName} - Inicio`}>
-  <div class="bg-primeleg-light"><Hero data={siteData} /></div>
-  <div class="bg-white"><About data={siteData} /></div>
-  <div class="bg-primeleg-light"><Services data={siteData} /></div>
-  <div class="bg-primeleg-primary"><Stats data={siteData} /></div>
-  <div class="bg-white"><Testimonials data={siteData} /></div>
+  <Hero data={siteData} />
+  <!-- <About data={siteData} /> -->
+  <Services data={siteData} />
+  <Stats data={siteData} />
+  <Testimonials data={siteData} />
 </Layout>

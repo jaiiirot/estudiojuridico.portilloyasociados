@@ -1,0 +1,56 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { siteData } from '../data/site';
+---
+
+<Layout 
+  title={`Nosotros | ${siteData.companyName}`}
+  description="Conozca más sobre Portillo Kus & Asociados, nuestro equipo de abogados y nuestra trayectoria nacional e internacional en el ámbito legal."
+>
+  <div class="w-full bg-web-background pb-28 border-t border-web-secondary/30">
+    
+    <div class="bg-web-secondary/10 pt-32 pb-24 px-4 text-center">
+      <h4 class="text-web-text font-bold text-[15px] uppercase tracking-widest mb-4">Sobre Nosotros</h4>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-web-text mb-6 leading-tight">
+        Nuestra <span class="text-web-primary">Firma Legal</span>
+      </h1>
+      <p class="text-gray-400 max-w-2xl mx-auto text-[17px] leading-relaxed italic">
+        "{siteData.tagline}"
+      </p>
+    </div>
+
+    <div class="container mx-auto px-4 -mt-10 relative z-10">
+      <div class="max-w-4xl mx-auto bg-web-secondary/20 p-10 md:p-16 rounded-sm shadow-lg border border-web-secondary">
+        
+        <h2 class="text-[28px] font-serif font-bold text-web-primary mb-8 border-b border-web-secondary/50 pb-4">
+          Trayectoria y Excelencia
+        </h2>
+        
+        <div class="space-y-6 text-gray-300 text-[16px] leading-relaxed">
+          <p>
+            Somos un Estudio Jurídico integral Nacional e Internacional, conformado por abogados con amplia trayectoria y especialistas en múltiples áreas del Derecho.
+          </p>
+          <p>
+            Somos especialistas en patrocinios de Ciudadanías Argentina, siendo los líderes a nivel nacional ya que hemos resuelto más de 900 expedientes desde 2020.
+          </p>
+          <p>
+            Asimismo somos expertos en Derecho Migratorio y prestamos asesorías de tramitaciones de residencias (Mercosur y Extra Mercosur) así como también patrocinio para revertir disposiciones de expulsión del país.
+          </p>
+          <p>
+            Otro de nuestros fuertes es el Derecho Penal, logrando resultados extraordinarios, demostrando la inocencia y obteniendo la Libertad de nuestros clientes en casos de imputaciones muy difíciles.
+          </p>
+          <p>
+            En cuanto al Derecho Laboral igualmente hemos dignificado a muchísimos trabajadores en cuanto a las injusticias que sufren.
+          </p>
+          
+          <div class="mt-10 p-6 bg-web-background border-l-4 border-web-primary">
+            <p class="text-web-text font-bold text-[17px] m-0">
+              Gracias a nuestro compromiso y esfuerzo somos uno de los Estudios Jurídicos más reconocidos de la Argentina.
+            </p>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</Layout>

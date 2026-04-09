@@ -1,0 +1,46 @@
+export const siteData = {
+  companyName: "Portillo Kus & Asociados",
+  tagline: "El Derecho es nuestra Pasión",
+  phone1: "(+54-9) 11-2711-1987",
+  phone2: "(+54-9) 11-3511-1987",
+  email: "portillokusyasociados@gmail.com",
+  address: "Av. Pte. R. Sáenz Peña 616 Piso 4, Oficina 403, C1035 CABA",
+  schedule: "Abierto · Cierra a las 18:00 hs.",
+  paymentMethods: "Efectivo, Transferencia, Paypal, Mercado Pago, Zelle",
+  social: {
+    instagram: "https://instagram.com/abogadoenargentina",
+    asociacion: "@uvenar",
+  },
+  hero: {
+    subtitle: "Estudio Jurídico Integral Nacional e Internacional",
+    title: "Líderes Nacionales en Soluciones",
+    titleHighlight: "Legales",
+    description: "Somos un Estudio Jurídico integral conformado por abogados con amplia trayectoria y especialistas en múltiples áreas del Derecho.",
+    cta: "Consultar Ahora",
+  },
+  about: {
+    subtitle: "Conózcanos",
+    title: "Su Socio de Confianza en Asuntos",
+    titleHighlight: "Legales Complejos",
+    description: "Gracias a nuestro compromiso y esfuerzo somos uno de los Estudios Jurídicos más reconocidos de la Argentina. Acompañamos a nuestros clientes paso a paso, brindando claridad, confianza y resultados extraordinarios.",
+    experienceTitle: "Más de 900",
+    experienceHighlight: "Expedientes Resueltos",
+    experienceText: "Somos especialistas en patrocinios de Ciudadanías Argentina, siendo los líderes a nivel nacional desde el año 2020.",
+  },
+  services: [
+    { title: "Ciudadanías Argentinas", desc: "Líderes a nivel nacional en patrocinios y resolución de expedientes de naturalización desde 2020." },
+    { title: "Derecho Migratorio", desc: "Asesorías en tramitaciones de residencias (Mercosur y Extra Mercosur) y patrocinio para revertir disposiciones de expulsión." },
+    { title: "Derecho Penal", desc: "Resultados extraordinarios, demostrando inocencia y obteniendo la libertad en casos de imputaciones muy difíciles." },
+    { title: "Derecho Laboral", desc: "Defensa integral para dignificar a muchísimos trabajadores en cuanto a las injusticias que sufren." },
+  ],
+  stats: {
+    resolved: "900",
+    rating: "5.0",
+    reviews: "339",
+  },
+  testimonials: [
+    { name: "Cliente Satisfecho", role: "Reseña de Google Maps", text: "Excelente atención. 1000% recomendados, transmite confianza y otorga seguridad y soluciones en muchos aspectos. Grata atención y profesionalismo." },
+    { name: "Yocselys Bermudez", role: "Cliente", text: "Inicié mi trámite de naturalización con el Dr. Portillo y me inspiró total confianza. Fue siempre muy atento, claro en cada explicación y me acompañó paso a paso." },
+    { name: "Jorge Requena", role: "Cliente", text: "Muy recomendable para temas migratorios. Me asesoró sobre mi reingreso a Argentina y recientemente por mi trámite de actualización de residencia. Claro y directo." },
+  ],
+};

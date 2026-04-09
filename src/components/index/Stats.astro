@@ -1,16 +1,16 @@
 ---
 const { data } = Astro.props;
 ---
-<section class="bg-primeleg-primary py-24 relative overflow-hidden">
+<section class="bg-web-background border-y border-web-secondary py-24 relative overflow-hidden">
   <div class="absolute inset-0 opacity-5 bg-[url('https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center bg-fixed"></div>
   
   <div class="container mx-auto px-4 relative z-10">
-    <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-700/60">
+    <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-web-secondary">
       
       <div class="flex flex-col items-center justify-center py-8 group">
         <div class="flex items-baseline mb-3">
-          <h3 class="text-[60px] font-serif font-bold text-white leading-none">{data.stats.resolved}</h3>
-          <span class="text-[40px] font-serif font-bold text-primeleg-accent ml-2">+</span>
+          <h3 class="text-[60px] font-serif font-bold text-web-text leading-none">{data.stats.resolved}</h3>
+          <span class="text-[40px] font-serif font-bold text-web-primary ml-2">+</span>
         </div>
         <p class="text-gray-400 text-[14px] font-bold uppercase tracking-widest text-center leading-relaxed">
           Expedientes<br/>Resueltos
@@ -19,8 +19,8 @@ const { data } = Astro.props;
 
       <div class="flex flex-col items-center justify-center py-8 group">
         <div class="flex items-baseline mb-3">
-          <h3 class="text-[60px] font-serif font-bold text-white leading-none">{data.stats.rating}</h3>
-          <svg class="w-8 h-8 text-primeleg-accent ml-3 -translate-y-2" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+          <h3 class="text-[60px] font-serif font-bold text-web-text leading-none">{data.stats.rating}</h3>
+          <svg class="w-8 h-8 text-web-primary ml-3 -translate-y-2" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
         </div>
         <p class="text-gray-400 text-[14px] font-bold uppercase tracking-widest text-center leading-relaxed">
           Estrellas en<br/>Google Maps
@@ -29,8 +29,8 @@ const { data } = Astro.props;
 
       <div class="flex flex-col items-center justify-center py-8 group">
         <div class="flex items-baseline mb-3">
-          <h3 class="text-[60px] font-serif font-bold text-white leading-none">{data.stats.reviews}</h3>
-          <span class="text-[40px] font-serif font-bold text-primeleg-accent ml-2">+</span>
+          <h3 class="text-[60px] font-serif font-bold text-web-text leading-none">{data.stats.reviews}</h3>
+          <span class="text-[40px] font-serif font-bold text-web-primary ml-2">+</span>
         </div>
         <p class="text-gray-400 text-[14px] font-bold uppercase tracking-widest text-center leading-relaxed">
           Reseñas de<br/>Clientes

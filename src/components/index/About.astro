@@ -1,42 +1,32 @@
 ---
 const { data } = Astro.props;
-const { about } = data;
+const { hero } = data;
 ---
-<section id="about" class="py-32">
-  <div class="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+<section class="relative pt-24 pb-32 overflow-hidden flex items-center bg-web-background">
+  <div class="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
     
-    <div class="relative pl-8">
-      <div class="w-[85%] rounded-sm overflow-hidden relative z-10 shadow-lg">
-        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=800&q=80" alt="Estudio Jurídico" class="w-full h-[500px] object-cover" />
-      </div>
-      <div class="absolute -bottom-12 right-0 w-[55%] border-8 border-white rounded-sm overflow-hidden z-20 shadow-2xl">
-         <img src="https://images.unsplash.com/photo-1556484606-2184bf18c227?auto=format&fit=crop&w=400&q=80" alt="Detalle" class="w-full h-48 object-cover" />
-      </div>
-    </div>
-    
-    <div class="mt-16 lg:mt-0">
-      <h4 class="text-primeleg-primary font-bold text-[15px] uppercase tracking-widest mb-4 border-l-2 border-primeleg-accent pl-4">
-        {about.subtitle}
+    <div class="z-10">
+      <h4 class="text-web-text font-bold text-[15px] tracking-widest uppercase mb-6 border-l-2 border-web-primary pl-4">
+        {hero.subtitle}
       </h4>
-      <h2 class="text-[40px] lg:text-[50px] font-serif font-bold text-primeleg-primary leading-[1.2] mb-8">
-        {about.title} <br/><span class="text-primeleg-accent">{about.titleHighlight}</span>
-      </h2>
-      <p class="text-gray-500 mb-10 leading-relaxed text-[17px]">
-        {about.description}
+      <h1 class="text-[50px] lg:text-[65px] font-serif font-bold text-web-text leading-[1.1] mb-8">
+        {hero.title} <br/><span class="text-web-primary">{hero.titleHighlight}</span>
+      </h1>
+      <p class="text-gray-300 text-[18px] mb-10 max-w-lg leading-relaxed">
+        {hero.description}
       </p>
-      
-      <div class="bg-primeleg-light p-8 border-l-4 border-primeleg-accent mb-10">
-        <h3 class="text-[24px] font-serif font-bold text-primeleg-primary mb-2">
-          {about.experienceTitle} <span class="text-primeleg-accent">{about.experienceHighlight}</span>
-        </h3>
-        <p class="text-gray-500 text-[15px] m-0">{about.experienceText}</p>
-      </div>
-      
-      <a href="/consultas" class="inline-flex items-center font-bold uppercase tracking-widest text-[14px] text-primeleg-primary hover:text-primeleg-accent transition-colors group">
-        Conocer Especialidades 
-        <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+      <a href="/consultas/consultas" class="inline-flex bg-web-primary text-web-background px-10 py-4 font-bold text-[15px] uppercase tracking-wider hover:bg-web-secondary hover:text-web-text transition-colors duration-300 items-center">
+        {hero.cta} 
+        <svg class="w-5 h-5 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
       </a>
     </div>
 
+    <div class="relative flex justify-end z-10 mt-12 lg:mt-0">
+      <div class="absolute -top-8 -right-8 w-64 h-64 bg-[radial-gradient(#c69c6d_2px,transparent_2px)] [background-size:16px_16px] opacity-30 -z-10"></div>
+      <div class="w-[90%] relative rounded-t-full overflow-hidden shadow-2xl border-b-8 border-web-primary">
+        <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=800&q=80" alt="Abogados" class="w-full h-[650px] object-cover hover:scale-105 transition-transform duration-700" />
+      </div>
+    </div>
+    
   </div>
 </section>

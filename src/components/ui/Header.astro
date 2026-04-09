@@ -1,17 +1,17 @@
 ---
 const { data } = Astro.props;
 ---
-<header class="w-full z-50 bg-white sticky top-0 shadow-sm border-b border-gray-100">
-  <div class="bg-primeleg-dark text-gray-400 text-[13px] py-2.5 hidden lg:block">
+<header class="w-full z-50 bg-web-background sticky top-0 shadow-md border-b border-web-secondary">
+  <div class="bg-web-secondary/20 text-gray-300 text-[13px] py-2.5 hidden lg:block">
     <div class="container mx-auto px-4 flex justify-between items-center">
       <div><p class="m-0 italic">{data.tagline}</p></div>
       <div class="flex space-x-6 items-center">
         <span class="flex items-center">
-          <svg class="w-4 h-4 text-primeleg-accent mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+          <svg class="w-4 h-4 text-web-primary mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
           {data.address}
         </span>
         <span class="flex items-center">
-          <svg class="w-4 h-4 text-primeleg-accent mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+          <svg class="w-4 h-4 text-web-primary mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
           {data.email}
         </span>
       </div>
@@ -20,25 +20,24 @@ const { data } = Astro.props;
   
   <div class="container mx-auto px-4 py-0 flex justify-between items-center h-20">
     <div class="flex items-center">
-      <div class="w-10 h-12 bg-primeleg-primary text-white flex items-center justify-center font-serif font-bold text-xl rounded-b-lg mr-2">PK</div>
-      <a href="/" class="text-xl md:text-2xl font-sans font-extrabold text-primeleg-primary uppercase tracking-wider leading-none">
-        Portillo Kus <br/><span class="text-primeleg-accent text-sm">& Asociados</span>
+      <div class="w-10 h-12 bg-web-primary text-web-background flex items-center justify-center font-serif font-bold text-xl rounded-b-lg mr-2">PK</div>
+      <a href="/" class="text-xl md:text-2xl font-sans font-extrabold text-web-text uppercase tracking-wider leading-none">
+        Portillo Kus <br/><span class="text-web-primary text-sm">& Asociados</span>
       </a>
     </div>
 
-    <nav class="hidden md:flex space-x-8 text-primeleg-primary font-bold text-[15px]">
-      <a href="/" class="hover:text-primeleg-accent transition">Inicio</a>
-      <a href="/#about" class="hover:text-primeleg-accent transition">Nosotros</a>
-      <a href="/#services" class="hover:text-primeleg-accent transition">Especialidades</a>
-      <a href="/consultas" class="hover:text-primeleg-accent transition flex items-center group">
-        Catálogo de Consultas 
-        <span class="ml-1 text-[10px] bg-primeleg-accent text-white px-2 py-0.5 rounded-sm ml-2 tracking-widest">NUEVO</span>
+    <nav class="hidden md:flex space-x-8 text-web-text font-bold text-[15px]">
+      <a href="/" class="hover:text-web-primary transition">Inicio</a>
+      <a href="/nosotros" class="hover:text-web-primary transition">Nosotros</a>
+      <a href="/#services" class="hover:text-web-primary transition">Especialidades</a>
+      <a href="/consultas/consultas" class="hover:text-web-primary transition flex items-center group">
+        Catálogo de Consultas
       </a>
-      <a href="/#testimonials" class="hover:text-primeleg-accent transition">Reseñas</a>
+      <a href="/testimonios" class="hover:text-web-primary transition">Reseñas</a>
     </nav>
 
     <div class="hidden md:flex items-center h-full">
-      <a href={`https://wa.me/${data.phone1.replace(/\D/g, '')}`} target="_blank" class="h-full bg-primeleg-accent text-white px-8 font-bold text-[15px] flex items-center hover:bg-primeleg-primary transition-colors">
+      <a href={`https://wa.me/${data.phone1.replace(/\D/g, '')}`} target="_blank" class="h-full bg-web-primary text-web-background px-8 font-bold text-[15px] flex items-center hover:bg-web-secondary hover:text-web-text transition-colors">
         Contacto <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
       </a>
     </div>

@@ -2,10 +2,11 @@
 
 @theme {
   /* Colores EXACTOS extraídos de las imágenes de Primeleg */
-  --color-primeleg-dark: #0c161d;    /* Topbar y Footer */
-  --color-primeleg-primary: #122230; /* Títulos y fondo del Header */
-  --color-primeleg-accent: #c69c6d;  /* Dorado/Cobre */
-  --color-primeleg-light: #f4f6f9;   /* Fondo gris muy sutil para secciones */
+  --color-web-text: #ffffff;    /* text */
+  --color-web-background: #0c161d; /* Fondos */
+  --color-web-primary: #c69c6d;  /* Dorado/Cobre botones/otros, titulos*/
+  --color-web-secondary: #484f55;   /* gris/Cobre botones/otros, */
+  --color-web-accent: #484f55; /*Dorado/Cobre, otros iconos,etc.*/
   
   /* Tipografías */
   --font-sans: 'Inter', sans-serif;
@@ -13,14 +14,13 @@
 }
 
 body {
-  @apply font-sans text-gray-500 bg-white antialiased;
+  @apply font-sans text-web-text bg-web-background antialiased;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  @apply font-serif text-primeleg-primary;
+  @apply font-serif text-web-primary;
 }
 
-/* Transiciones para botones y enlaces */
 a, button {
   @apply transition-all duration-300;
 }
