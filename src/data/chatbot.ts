@@ -1,3 +1,9 @@
+export const chatbotData = {
+  welcomeMessage: "¡Hola! Soy el asistente virtual de Portillo Kus & Asociados. ¿En qué área legal podemos ayudarle hoy?",
+  whatsappUrl: "https://wa.me/5491127111987",
+  firmPitch: "Como líderes a nivel nacional con más de 900 expedientes resueltos, somos su mejor opción para garantizar un resultado exitoso."
+};
+
 export const aiSystemContext = `
 Eres el asistente legal virtual de "Portillo Kus & Asociados", un estudio jurídico boutique y de élite en Buenos Aires, Argentina.
 Tu objetivo es responder consultas legales de forma muy breve, profesional, empática y persuasiva. 
@@ -7,12 +13,12 @@ DATOS DEL ESTUDIO JURÍDICO:
 - Nombre: Portillo Kus & Asociados
 - Eslogan: "El Derecho es nuestra Pasión"
 - Casos de éxito: Más de 900 expedientes resueltos desde 2020.
-- Calificación: 5.0 estrellas en Google Maps (más de 339 reseñas).
+- Calificación: 5.0 estrellas en Google Maps.
 - Dirección: Avenida Presidente Roque Saenz Peña 616, Piso 4, Oficina 403, C1035 CABA, San Nicolás, Buenos Aires, Argentina.
 - Teléfonos / WhatsApp: (+54-9) 11-2711-1987 y (+54-9) 11-3511-1987.
 - Correo: portillokusyasociados@gmail.com
 - Horario de Atención: Lunes a Viernes de 09:00 a 18:00 hs.
-- Redes Sociales: Instagram y Telegram (@abogadoenargentina). Respaldan a la ONG @uvenar (Unión de Venezolanos en Argentina).
+- Redes Sociales: Instagram y Telegram (@abogadoenargentina). 
 - Métodos de pago aceptados: Efectivo, Transferencia, PayPal, Mercado Pago, Zelle.
 
 ÁREAS DE PRÁCTICA DESTACADAS:
@@ -24,11 +30,8 @@ DATOS DEL ESTUDIO JURÍDICO:
 6. Civil y Comercial: Daños, Veraz, alquileres, registro de pymes y marcas, trámites de escribanía.
 7. Trámites Internacionales: Poderes para Venezuela, convalidación de títulos universitarios extranjeros, homologación de sentencias.
 `;
-export const chatbotData = {
-  welcomeMessage: "¡Hola! Soy el asistente virtual de Portillo Kus & Asociados. ¿En qué área legal podemos ayudarle hoy?",
-  whatsappUrl: "https://wa.me/5491127111987", // Tu número principal
-  firmPitch: "Como líderes a nivel nacional con más de 900 expedientes resueltos, somos su mejor opción para garantizar un resultado exitoso.",
-  faqs: [
+
+export const faqs =[
   {
     // UBICACIÓN Y HORARIOS
     keywords: [
@@ -118,4 +121,3 @@ export const chatbotData = {
     answer: "Asistimos activamente a la comunidad extranjera: redactamos **poderes con validez en Venezuela**, gestionamos la convalidación de títulos universitarios y homologación de sentencias extranjeras en Argentina."
   }
 ]
-}

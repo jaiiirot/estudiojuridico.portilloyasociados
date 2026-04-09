@@ -1,5 +1,5 @@
 ---
-import { chatbotData } from '../../data/chatbot';
+import { chatbotData, faqs } from '../../data/chatbot';
 ---
 
 <button id="chatbot-toggle" class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-web-primary rounded-full shadow-[0_0_20px_rgba(198,156,109,0.4)] flex items-center justify-center text-web-background hover:scale-110 transition-transform duration-300">
@@ -42,34 +42,19 @@ import { chatbotData } from '../../data/chatbot';
   .custom-scrollbar::-webkit-scrollbar-thumb { background: #484f55; border-radius: 4px; }
 </style>
 
-<script>
-  // Importar datos desde Frontmatter al cliente
-  const chatData = {
-    welcome: "¡Hola! Soy el asistente de Portillo Kus & Asociados. ¿En qué área legal podemos ayudarle hoy?",
-    whatsappUrl: "https://wa.me/5491127111987?text=Hola,%20vengo%20desde%20su%20sitio%20web%20y%20deseo%20una%20consulta.",
-    firmPitch: "Como líderes a nivel nacional con más de 900 expedientes resueltos, somos su mejor opción para garantizar un resultado exitoso.",
-    faqs: [
-      { keys: ["ciudadanía", "ciudadania", "italiana", "española", "nacionalidad", "argentina"], ans: "Somos especialistas y líderes a nivel nacional en trámites de Ciudadanía, con más de 900 expedientes resueltos con éxito." },
-      { keys: ["penal", "preso", "comisaría", "comisaria", "cárcel", "carcel", "delito", "defensa"], ans: "Contamos con un equipo experto en Defensa Penal, logrando resultados extraordinarios y demostrando inocencia en casos complejos." },
-      { keys: ["migración", "migraciones", "visa", "expulsión", "residencia", "radicación"], ans: "En Derecho Migratorio somos expertos. Resolvemos desde trámites de residencia hasta la revocación de órdenes de expulsión." },
-      { keys: ["divorcio", "familia", "alimentos", "cuota", "hijos", "visitas"], ans: "Nuestro equipo de Familia aborda casos de divorcio y cuota alimentaria con la mayor confidencialidad y estrategia." },
-      { keys: ["precio", "costo", "honorarios", "pagar", "consulta", "valor"], ans: "Cada caso es único y requiere un análisis profesional detallado. Contamos con múltiples métodos de pago (Efectivo, Transferencia, Paypal, Zelle)." }
-    ]
-  };
-
+<script define:vars={{ chatbotData, faqs }}>
   const toggleBtn = document.getElementById('chatbot-toggle');
   const closeBtn = document.getElementById('chatbot-close');
   const windowEl = document.getElementById('chatbot-window');
   const messagesEl = document.getElementById('chatbot-messages');
   const formEl = document.getElementById('chatbot-form');
-  const inputEl = document.getElementById('chatbot-input') as HTMLInputElement;
+  const inputEl = document.getElementById('chatbot-input');
 
-  // Lógica de apertura/cierre
   toggleBtn?.addEventListener('click', () => {
     windowEl?.classList.remove('hidden');
     windowEl?.classList.add('flex');
     toggleBtn.classList.add('hidden');
-    if(messagesEl?.children.length === 0) addMessage(chatData.welcome, 'bot');
+    if(messagesEl?.children.length === 0) addMessage(chatbotData.welcomeMessage, 'bot');
   });
 
   closeBtn?.addEventListener('click', () => {
@@ -78,19 +63,16 @@ import { chatbotData } from '../../data/chatbot';
     toggleBtn?.classList.remove('hidden');
   });
 
-  // Renderizar Mensaje
-  function addMessage(text: string, sender: 'user' | 'bot') {
+  function addMessage(text, sender) {
     const div = document.createElement('div');
     div.className = `max-w-[85%] rounded-sm p-4 text-[14px] leading-relaxed shadow-md ${sender === 'user' ? 'bg-web-primary text-web-background ml-auto' : 'bg-web-secondary/20 border border-web-secondary/50 text-gray-300 mr-auto'}`;
-    div.innerHTML = text; // Permite inyectar enlaces <a>
+    div.innerHTML = text; 
     messagesEl?.appendChild(div);
     messagesEl?.scrollTo({ top: messagesEl.scrollHeight, behavior: 'smooth' });
   }
 
-  // Generar Botón de WhatsApp HTML
-  const getWhatsAppBtn = () => `<br><br><a href="${chatData.whatsappUrl}" target="_blank" class="inline-block mt-2 bg-web-background border border-web-primary text-web-primary px-4 py-2 text-[12px] uppercase font-bold tracking-widest rounded-sm hover:bg-web-primary hover:text-web-background transition-colors">Hablar con un Abogado </a>`;
+  const getWhatsAppBtn = () => `<br><br><a href="${chatbotData.whatsappUrl}" target="_blank" class="inline-block mt-2 bg-web-background border border-web-primary text-web-primary px-4 py-2 text-[12px] uppercase font-bold tracking-widest rounded-sm hover:bg-web-primary hover:text-web-background transition-colors">Hablar con un Abogado</a>`;
 
-  // Gestión Límite Diario (IA)
   function canUseAI() {
     const today = new Date().toDateString();
     const limitData = JSON.parse(localStorage.getItem('pk_chat_limit') || '{"date": "", "count": 0}');
@@ -107,35 +89,38 @@ import { chatbotData } from '../../data/chatbot';
     return false;
   }
 
-  // Procesar Envío
   formEl?.addEventListener('submit', async (e) => {
     e.preventDefault();
     const msg = inputEl.value.trim();
     if (!msg) return;
 
+    if (msg === '/reset_ai_000') {
+      localStorage.removeItem('pk_chat_limit');
+      inputEl.value = '';
+      addMessage("⚙️ <b>SISTEMA:</b> Se ha reseteado el límite diario de IA. Ahora dispones de 3 consultas nuevamente.", 'bot');
+      return;
+    }
+
     addMessage(msg, 'user');
     inputEl.value = '';
     
-    // 1. Buscar en FAQ por palabra clave
     const lowerMsg = msg.toLowerCase();
-    const faqMatch = chatData.faqs.find(faq => faq.keys.some(key => lowerMsg.includes(key)));
+    const faqMatch = faqs.find(faq => faq.keywords.some(key => lowerMsg.includes(key)));
 
     if (faqMatch) {
       setTimeout(() => {
-        addMessage(`${faqMatch.ans} ${chatData.firmPitch} ${getWhatsAppBtn()}`, 'bot');
+        addMessage(`${faqMatch.answer} ${chatbotData.firmPitch} ${getWhatsAppBtn()}`, 'bot');
       }, 600);
       return;
     }
 
-    // 2. Si no es FAQ, usar IA (si tiene créditos)
     if (!canUseAI()) {
       setTimeout(() => {
-        addMessage(`Ha superado el límite de consultas virtuales por hoy. Para analizar la complejidad de su caso de manera profunda, le invitamos a contactarnos. ${chatData.firmPitch} ${getWhatsAppBtn()}`, 'bot');
+        addMessage(`Ha superado el límite de consultas virtuales por hoy. Para analizar la complejidad de su caso de manera profunda, le invitamos a contactarnos. ${chatbotData.firmPitch} ${getWhatsAppBtn()}`, 'bot');
       }, 500);
       return;
     }
 
-    // Loading indicator
     const loadingId = 'loading-' + Date.now();
     const loadingDiv = document.createElement('div');
     loadingDiv.id = loadingId;
@@ -143,7 +128,6 @@ import { chatbotData } from '../../data/chatbot';
     loadingDiv.innerText = 'Analizando caso...';
     messagesEl?.appendChild(loadingDiv);
 
-    // Llamada a la API de Groq
     try {
       const res = await fetch('/api/chat', {
         method: 'POST',
@@ -153,8 +137,12 @@ import { chatbotData } from '../../data/chatbot';
       const data = await res.json();
       
       document.getElementById(loadingId)?.remove();
-      // Aseguramos que siempre lleve el botón de WhatsApp al final
-      addMessage(`${data.reply} ${getWhatsAppBtn()}`, 'bot');
+      
+      if (data.error) {
+         addMessage(`Error: ${data.error}. Por favor contacte por WhatsApp. ${getWhatsAppBtn()}`, 'bot');
+      } else {
+         addMessage(`${data.reply} ${getWhatsAppBtn()}`, 'bot');
+      }
     } catch (err) {
       document.getElementById(loadingId)?.remove();
       addMessage(`Ocurrió un error de red. Por favor, comuníquese directamente para una atención premium. ${getWhatsAppBtn()}`, 'bot');
