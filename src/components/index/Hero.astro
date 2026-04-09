@@ -22,10 +22,25 @@ const { hero } = data;
     </div>
 
     <div class="relative flex justify-end z-10 mt-12 lg:mt-0">
+      
       <div class="absolute -top-8 -right-8 w-64 h-64 bg-[radial-gradient(#c69c6d_2px,transparent_2px)] [background-size:16px_16px] opacity-30 -z-10"></div>
-      <div class="w-[90%] relative rounded-t-full overflow-hidden shadow-2xl border-b-8 border-web-primary">
-        <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=800&q=80" alt="Abogados" class="w-full h-[650px] object-cover hover:scale-105 transition-transform duration-700" />
+      
+      <div class="w-full xl:w-[95%] relative rounded-2xl overflow-hidden shadow-[0_20px_50px_-15px_rgba(0,0,0,0.8)] border-b-8 border-web-primary bg-[#101c24] aspect-video group">
+        
+        <div class="absolute inset-0 border-2 border-transparent group-hover:border-web-primary/30 transition-colors duration-500 z-20 pointer-events-none rounded-2xl"></div>
+
+        <iframe 
+          class="w-full h-full relative z-10"
+          src="https://www.youtube.com/embed/I5zp4_cqZYk?rel=0&modestbranding=1&autoplay=1&mute=1" 
+          title="Estudio Jurídico Portillo Kus & Asociados" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen>
+        </iframe>
+        
       </div>
+      
     </div>
     
   </div>

@@ -9,6 +9,7 @@ export const siteData = {
   paymentMethods: "Efectivo, Transferencia, Paypal, Mercado Pago, Zelle",
   social: {
     instagram: "https://instagram.com/abogadoenargentina",
+    tiktok: "https://www.tiktok.com/@abogadoenargentina",
     asociacion: "@uvenar",
   },
   hero: {

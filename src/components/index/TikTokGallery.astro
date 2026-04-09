@@ -1,0 +1,117 @@
+---
+import { tiktokData } from '../../data/tiktok';
+---
+
+<section class="py-32 bg-web-background border-t border-web-secondary/20 relative overflow-hidden">
+  
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-96 bg-[radial-gradient(ellipse_at_top,_var(--tw-colors-web-primary)_0%,_transparent_70%)] opacity-5 pointer-events-none"></div>
+
+  <div class="mx-auto max-w-7xl w-full px-4 relative z-10">
+    
+    <div class="flex items-end justify-between pb-10 border-b border-web-secondary/30 mb-10">
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="w-8 h-[1px] bg-web-primary"></span>
+          <span class="text-web-primary font-bold tracking-widest uppercase text-[12px]">@abogadoenargentina</span>
+        </div>
+        <h2 class="font-serif font-bold text-3xl md:text-5xl text-web-text leading-tight">
+          Información <span class="text-web-primary italic font-light">Legal en Video</span>
+        </h2>
+      </div>
+      
+      <div class="hidden md:flex items-center gap-x-4">
+        <button id="btn-prev" class="w-12 h-12 flex items-center justify-center border border-web-secondary/50 rounded-full text-web-secondary hover:text-web-background hover:bg-web-primary hover:border-web-primary transition-all duration-300 disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-web-secondary disabled:hover:border-web-secondary/50 disabled:cursor-not-allowed" aria-label="Anterior">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7"></path></svg>
+        </button>
+        <button id="btn-next" class="w-12 h-12 flex items-center justify-center border border-web-secondary/50 rounded-full text-web-secondary hover:text-web-background hover:bg-web-primary hover:border-web-primary transition-all duration-300 disabled:opacity-30" aria-label="Siguiente">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"></path></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="relative -mx-4 px-4 md:mx-0 md:px-0">
+      <div id="tiktok-carousel" class="flex overflow-x-auto gap-x-6 snap-mandatory snap-x pb-8 custom-scrollbar scroll-smooth">
+        
+        {tiktokData.map((video) => (
+          <div 
+            class="tiktok-card rounded-sm h-[550px] w-[300px] sm:w-[320px] snap-center bg-[#101c24] relative shrink-0 cursor-pointer border border-web-secondary/30 group overflow-hidden shadow-lg hover:border-web-primary/50 hover:shadow-[0_15px_30px_-10px_rgba(198,156,109,0.2)] transition-all duration-500"
+            data-videoid={video.id}
+          >
+            <div class="absolute inset-0 z-0">
+              <div class="absolute inset-0 bg-gradient-to-t from-[#0c161d] via-[#0c161d]/80 to-transparent z-10"></div>
+              <img src="videos.png" alt={video.title} class="w-full h-full object-cover filter grayscale-[50%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" loading="lazy" />
+            </div>
+
+            <div class="absolute inset-0 z-20 flex flex-col justify-end p-6">
+              <h3 class="text-web-text font-serif font-bold text-[20px] leading-snug mb-2 group-hover:text-web-primary transition-colors">{video.title}</h3>
+              <p class="text-[12px] font-bold uppercase tracking-widest text-web-secondary group-hover:text-web-text transition-colors">Portillo Kus & Asociados</p>
+            </div>
+
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-web-background/80 backdrop-blur-sm border border-web-primary/50 rounded-full flex items-center justify-center z-30 group-hover:bg-web-primary group-hover:scale-110 transition-all duration-300">
+              <svg width="20" height="24" viewBox="0 0 16 18" fill="none" class="text-web-primary group-hover:text-web-background ml-1 transition-colors">
+                <path d="M15 7.26795C16.3333 8.03775 16.3333 9.96225 15 10.7321L3 17.6603C1.66667 18.4301 2.92002e-06 17.4678 2.98732e-06 15.9282L3.593e-06 2.0718C3.6603e-06 0.532196 1.66667 -0.430054 3 0.339746L15 7.26795Z" fill="currentColor"></path>
+              </svg>
+            </div>
+            
+            <div class="absolute bottom-0 left-0 w-0 h-1 bg-web-primary transition-all duration-500 z-30 group-hover:w-full"></div>
+          </div>
+        ))}
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Scrollbar invisible para un diseño más limpio */
+  .custom-scrollbar::-webkit-scrollbar { height: 0px; }
+  .custom-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+</style>
+
+<script>
+  // 1. Lógica del Carrusel (Flechas de navegación)
+  const carousel = document.getElementById('tiktok-carousel');
+  const btnPrev = document.getElementById('btn-prev') as HTMLButtonElement;
+  const btnNext = document.getElementById('btn-next') as HTMLButtonElement;
+
+  if (carousel && btnPrev && btnNext) {
+    const scrollAmount = 340; // Ancho de la tarjeta + gap
+
+    const updateButtons = () => {
+      btnPrev.disabled = carousel.scrollLeft <= 0;
+      btnNext.disabled = carousel.scrollLeft >= (carousel.scrollWidth - carousel.clientWidth - 10);
+    };
+
+    carousel.addEventListener('scroll', updateButtons);
+    updateButtons(); // Estado inicial
+
+    btnPrev.addEventListener('click', () => {
+      carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    });
+
+    btnNext.addEventListener('click', () => {
+      carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    });
+  }
+
+  // 2. Lógica para inyectar el iframe de TikTok al hacer clic (Evita cargar todos los videos de golpe y optimiza la web)
+  document.querySelectorAll('.tiktok-card').forEach(card => {
+    card.addEventListener('click', function(this: HTMLElement) {
+      const videoId = this.getAttribute('data-videoid');
+      if (!videoId) return;
+
+      // Reemplazamos el contenido de la tarjeta por el reproductor nativo de TikTok
+      this.innerHTML = `
+        <iframe 
+          class="w-full h-full rounded-sm absolute inset-0 z-50 bg-[#101c24]" 
+          src="https://www.tiktok.com/embed/v2/${videoId}" 
+          frameborder="0" 
+          allow="autoplay; encrypted-media; fullscreen" 
+          allowfullscreen>
+        </iframe>
+      `;
+      // Quitamos las clases de hover para que no interfieran con el video
+      this.classList.remove('group', 'cursor-pointer');
+    });
+  });
+</script>
